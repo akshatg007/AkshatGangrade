@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshat Gangrade - Software Engineer</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f7;
+            color: #333;
+        }
+
+        /* Custom styles */
+        .project-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #0071e3;
+            color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Main content styles */
+        main {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        /* Hero section styles */
+        #hero {
+            background-image: url('/mnt/data/SF.png');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        #hero h1, #hero p {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        #hero p {
+            font-size: 2rem;
+            display: block;
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Section heading styles */
+        h2 {
+            color: #0071e3;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background-color: #0071e3;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+        }
+
+        /* Project card styles */
+        .project-card {
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            padding: 1.5rem;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+        }
+
+        /* About section styles */
+        #about {
+            background-color: #fff;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Resume section styles */
+        #resume {
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            animation: fadeIn 1.5s ease-in-out;
+            text-align: center;
+        }
+
+        #resume img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Education section styles */
+        #education {
+            background-color: #f9f9f9;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .education-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .education-item img {
+            margin-right: 16px;
+            width: 64px;
+            height: 64px;
+        }
+
+        /* Awards section styles */
+        #awards {
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Research section styles */
+        #research {
+            background-color: #f5f5f7;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Experience section styles */
+        #experience {
+            background-color: #f9f9f9;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .experience-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .experience-item img {
+            margin-right: 16px;
+            width: 64px;
+            height: 64px;
+        }
+
+        .experience-dates {
+            white-space: nowrap;
+        }
+
+        /* Icon styles */
+        .icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #0071e3;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            margin-right: 10px;
+        }
+
+        .icon i {
+            font-size: 24px;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-blue-800 text-white shadow">
+        <div class="container mx-auto flex justify-between items-center p-6">
+            <div class="font-bold text-xl">Akshat Gangrade</div>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#about" class="hover:text-yellow-300">About</a></li>
+                    <li><a href="#experience" class="hover:text-yellow-300">Experience</a></li>
+                    <li><a href="#projects" class="hover:text-yellow-300">Projects</a></li>
+                    <li><a href="#research" class="hover:text-yellow-300">Research</a></li>
+                    <li><a href="#awards" class="hover:text-yellow-300">Awards</a></li>
+                    <li><a href="#education" class="hover:text-yellow-300">Education</a></li>
+                    <li><a href="#resume" class="hover:text-yellow-300">Resume</a></li>
+                    <li><a href="#contact" class="hover:text-yellow-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto">
+        <!-- Hero Section -->
+        <section id="hero" class="px-4 md:px-8 py-24 text-center bg-cover bg-center" style="background-image: url('SF.png');">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm Akshat Gangrade</h1>
+            <p class="text-lg md:text-xl mb-4">Software Engineer</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="px-4 md:px-8 py-24 bg-gray-100">
+            <div class="container mx-auto">
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-center">About Me 😊</h2>
+                <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                    <div class="flex flex-col md:flex-row items-center justify-center">
+                        <img src="Akshat.png" alt="Akshat Gangrade" class="w-32 h-32 rounded-full mb-4 md:mb-0 shadow-lg">
+                        <div class="md:ml-8">
+                            <p class="text-lg">Experienced Backend Engineer with 3+ years of professional experience developing RESTful Microservices, Web Applications and DevOps. Possess hands-on experience supporting, automating, and optimizing CI/CD processes for applications leveraging Jenkins and GitLab.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="px-4 md:px-8 py-24 bg-gray-100">
+            <div class="container mx-auto">
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-center">Work Experience 💼</h2>
+                <div class="relative">
+                    <div class="absolute inset-0 flex justify-center items-center">
+                        <div class="h-full w-1 bg-gradient-to-b from-blue-500 to-green-500"></div>
+                    </div>
+                    <div class="space-y-16">
+                        <!-- Experience Item 1 -->
+                        <div class="relative flex items-center">
+                            <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300 w-full md:w-1/2 ml-auto">
+                                <div class="flex items-center">
+                                    <img src="Keelworks.png" alt="Keelworks Foundation Logo" class="w-16 h-16 mr-4">
+                                    <div>
+                                        <h3 class="text-2xl font-bold mb-1">Keelworks Foundation</h3>
+                                        <p class="text-lg font-semibold text-gray-600 mb-1">Software Engineer</p>
+                                        <p class="text-lg font-semibold text-gray-600">Austin, TX | Jan 2023 – Present</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bg-gradient-to-r from-blue-500 to-green-500 rounded-full w-12 h-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <!-- Experience Item 2 -->
+                        <div class="relative flex items-center">
+                            <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300 w-full md:w-1/2 mr-auto">
+                                <div class="flex items-center">
+                                    <img src="ECSS.png" alt="UT Dallas Logo" class="w-16 h-16 mr-4">
+                                    <div>
+                                        <h3 class="text-2xl font-bold mb-1">University of Texas Dallas</h3>
+                                        <p class="text-lg font-semibold text-gray-600 mb-1">Graduate Research Assistant</p>
+                                        <p class="text-lg font-semibold text-gray-600">Dallas, TX | Aug 2023 – Dec 2023</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bg-gradient-to-r from-blue-500 to-green-500 rounded-full w-12 h-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <!-- Experience Item 3 -->
+                        <div class="relative flex items-center">
+                            <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300 w-full md:w-1/2 ml-auto">
+                                <div class="flex items-center">
+                                    <img src="XiFin.png" alt="XIFIN Logo" class="w-16 h-16 mr-4">
+                                    <div>
+                                        <h3 class="text-2xl font-bold mb-1">XiFin</h3>
+                                        <p class="text-lg font-semibold text-gray-600 mb-1">Software Engineer</p>
+                                        <p class="text-lg font-semibold text-gray-600">Dallas, TX | Jun 2022 – Aug 2023</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bg-gradient-to-r from-blue-500 to-green-500 rounded-full w-12 h-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                        </div>
+                        <!-- Experience Item 4 -->
+                        <div class="relative flex items-center">
+                            <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300 w-full md:w-1/2 mr-auto">
+                                <div class="flex items-center">
+                                    <img src="UTD.png" alt="UT Dallas Logo" class="w-16 h-16 mr-4">
+                                    <div>
+                                        <h3 class="text-2xl font-bold mb-1">University of Texas Dallas</h3>
+                                        <p class="text-lg font-semibold text-gray-600 mb-1">Graduate Teaching Assistant</p>
+                                        <p class="text-lg font-semibold text-gray-600">Dallas, TX | Jan 2022 – May 2022</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bg-gradient-to-r from-blue-500 to-green-500 rounded-full w-12 h-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                        </div>
+                        <!-- Experience Item 5 -->
+                        <div class="relative flex items-center">
+                            <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300 w-full md:w-1/2 ml-auto">
+                                <div class="flex items-center">
+                                    <img src="VMware.png" alt="VMware Logo" class="w-16 h-16 mr-4">
+                                    <div>
+                                        <h3 class="text-2xl font-bold mb-1">VMware</h3>
+                                        <p class="text-lg font-semibold text-gray-600 mb-1">Software Engineer</p>
+                                        <p class="text-lg font-semibold text-gray-600 experience-dates">Bangalore, India | Jun 2020 – Aug 2021</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bg-gradient-to-r from-blue-500 to-green-500 rounded-full w-12 h-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-server"></i>
+                            </div>
+                        </div>
+                        <!-- Experience Item 6 -->
+                        <div class="relative flex items-center">
+                            <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300 w-full md:w-1/2 mr-auto">
+                                <div class="flex items-center">
+                                    <img src="RedHat.png" alt="RedHat Logo" class="w-16 h-16 mr-4">
+                                    <div>
+                                        <h3 class="text-2xl font-bold mb-1">RedHat</h3>
+                                        <p class="text-lg font-semibold text-gray-600 mb-1">Software Engineering Intern</p>
+                                        <p class="text-lg font-semibold text-gray-600 experience-dates">Bangalore, India | May 2019 – Jun 2020</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute bg-gradient-to-r from-blue-500 to-green-500 rounded-full w-12 h-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white flex items-center justify-center text-white text-xl">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Font Awesome -->
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+        <!-- Projects Section -->
+        <section id="projects" class="px-4 md:px-8 py-24">
+            <div class="container mx-auto">
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-center">Projects 🚀</h2>
+                <!-- Project Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">Bitcoin Transaction System</h3>
+                        <p class="text-gray-700 mb-4">Programmed a web-based bitcoin trading app using Flask, handling 500 daily users with 99.9% uptime.</p>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">Startup Search Engine</h3>
+                        <p class="text-gray-700 mb-4">Developed a startup search engine using Apache Airflow, crawling 100,628 pages from 63 seed URLs. Implemented indexing, page ranking, clustering, and query expansion, boosting search accuracy by 98.7%.</p>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">Image Processing of Cat and Dog</h3>
+                        <p class="text-gray-700 mb-4">Built a cat & dog binary image classification system evaluating 10,000 images split into a 20:80 ratio for testing and training purposes and accelerated the accuracy to 80% by incorporating a Deep CNN model and leveraging TensorFlow as the backend while running 50 epochs.</p>
+                    </div>
+                    <!-- Project Card 4 -->
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">x86 Compiler Construction</h3>
+                        <p class="text-gray-700 mb-4">Fabricated a compiler with variable declarations, 5+ arithmetic operations, if-else branches, loops, function calls with arbitrary parameters, heap modification, and garbage collection.</p>
+                    </div>
+                    <!-- Project Card 5 -->
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">Faster Dual Tree Traversal for Nearest Neighbor Search</h3>
+                        <p class="text-gray-700 mb-4">Optimized nearest neighbor search algorithms by implementing a tree-structure data organization and developing efficient traversal techniques; achieved a 40% decrease in search query response time, enhancing user experience and satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="px-4 md:px-8 py-24 bg-gray-50">
+            <div class="container mx-auto">
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-center">Research 🔬</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">Hyper Evidential Deep Learning To Quantify Composite Classification Uncertainty</h3>
+                        <p class="text-gray-700">Developed a proprietary labeling algorithm within an NSF grant project, achieving a 98.3% data accuracy rate on image labeling using transfer learning and semi-supervised techniques.</p>
+                        <a href="https://openreview.net/pdf?id=A7t7z6g6tM" class="text-blue-600 hover:underline">View Research Paper</a>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">DES and AES Techniques in Cryptography Algorithms</h3>
+                        <p class="text-gray-700">The paper evaluates these symmetric encryption techniques based on several criteria: key size, space and time requirements, vulnerability to attacks, avalanche effect, and simulation time. The analysis aims to determine which algorithm is more efficient and secure in the context of modern computer network security, highlighting AES as the superior choice due to its better performance and higher security.</p>
+                        <a href="https://drive.google.com/file/d/0B0CVDt6nkFOvNGhQaEphdDVWNDhSazZ1SmFwalAzU3RYOHY0/view?resourcekey=0-srD7UPz20ZG3nL9UbUVzng" class="text-blue-600 hover:underline">View Research Paper</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards Section -->
+        <section id="awards" class="px-4 md:px-8 py-24">
+            <div class="container mx-auto">
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-center">Awards & Volunteering 🏆</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">XiFiN’s Engineering Excellence  Award</h3>
+                        <p class="text-gray-700">XiFin, Inc, Year: 2023</p>
+                    </div>
+
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">Secured 1st Rank in Big Data Hackathon</h3>
+                        <p class="text-gray-700">Indian Institute of Technology Kharagpur, Year: 2018</p>
+                    </div>
+
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">Enviormental Volunteer</h3>
+                        <p class="text-gray-700">World Wide Fund for Nature, Year: 2018</p>
+                    </div>
+
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">Student Volunteer</h3>
+                        <p class="text-gray-700">Rajiv Gandhi Proudyogiki Vishwavidyalaya, Year: 2019</p>
+                    </div>
+
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <h3 class="text-xl font-bold mb-2">Instructional Mentor</h3>
+                        <p class="text-gray-700">Raahat, Year: 2017</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="px-4 md:px-8 py-24 bg-gray-50">
+            <div class="container mx-auto">
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-center">Education 🎓</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <div class="flex items-center">
+                            <img src="UTD.png" alt="UT Dallas Logo" class="w-16 h-16 mr-4">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">The University of Texas at Dallas</h3>
+                                <p class="text-lg">MS in Computer Science</p>
+                                <p class="text-lg">GPA: 3.7 / 4</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                        <div class="flex items-center">
+                            <img src="RGPV.png" alt="RGPV Logo" class="w-16 h-16 mr-4">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Rajiv Gandhi Proudyogiki Vishwavidyalaya</h3>
+                                <p class="text-lg">BE in Computer Science</p>
+                                <p class="text-lg">GPA: 8.66 / 10</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="px-4 md:px-8 py-24">
+            <div class="container mx-auto">
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-center">Resume 📄</h2>
+                <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300">
+                    <img src="Resume-Akshat.png" alt="Akshat Gangrade Resume">
+                    <a href="/Users/akshatgangrade/Desktop/Resume/Fresh Overleaf /Akshat_Gangrade_Resume.pdf" target="_blank" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 inline-block">Download Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="px-4 md:px-8 py-24 bg-gray-50">
+            <div class="container mx-auto">
+                <h2 class="text-2xl md:text-4xl font-bold mb-8 text-center">Contact 📬</h2>
+                <div class="bg-white shadow-lg rounded-lg p-6 transition transform project-card hover:shadow-xl duration-300 text-center">
+                    <p class="mb-4 flex items-center justify-center space-x-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail Icon" class="w-6 h-6">
+                        <a href="mailto:akshatgangrade18@gmail.com" class="text-black">akshatgangrade18@gmail.com</a>
+                    </p>
+                    <p class="mb-4 flex items-center justify-center space-x-2">
+                        <i class="fab fa-linkedin text-xl text-blue-500"></i>
+                        <a href="https://www.linkedin.com/in/agang/" class="text-blue-500">linkedin.com/in/agang/</a>
+                    </p>
+                    <p class="mb-4 flex items-center justify-center space-x-2">
+                        <i class="fab fa-instagram text-xl text-pink-500"></i>
+                        <a href="https://www.instagram.com/akshatgangrade18" class="text-pink-500">instagram.com/akshatgangrade18</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Font Awesome -->
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    </main>
+</body>
+</html>
